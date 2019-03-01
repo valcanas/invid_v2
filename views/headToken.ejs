@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="/public/js/keepScroll.js"></script>
+    <script src="/js/stars.js"></script>
+    <script src="/js/indexAll.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">   
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/css/stars.css">
+    <link rel="stylesheet" type="text/css" href="/css/style_indexAll.css"> 
+    
+    
+    <title>indexAll</title>
+</head>
+<body class="bg-dark">
+
+<div class="topLogo">
+    
+  <form class="row justify-content-center" id="headLogo" action="/main/auth">
+    <a class="svg row" href="/main/auth/voting/<%= token %>"> 
+      <object data="/img/imagineDifferent.svg" class="col-12 mainLogo" type="image/svg+xml"></object>
+    </a>
+  
+  </form>
+  <hr class="style1">
+    
+</div>
+
+<div class="botonAdmin col">
+    <form action="/main/auth">
+        <button class="float-right btn btn-outline-primary" type="submit">LOGOUT</button>
+    </form>
+</div>

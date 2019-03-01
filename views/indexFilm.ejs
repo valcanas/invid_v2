@@ -1,0 +1,44 @@
+<%- include head %>
+
+    
+        <main>
+                <% if (shortfilms.length > 0) { %>
+                    <div class="col-12">
+                        <div class="row justify-content-center">
+                        <% for (let film of shortfilms) { %>
+                            <div class="tarjetas bg-dark card rounded col-lg-3 border border-<% if(film.enable_film === 1){%>primary<%} else {%>danger<%}%>">
+                                <iframe class="adminVideo card-img-top" src="<%= film.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <div class="align-items-center">
+                                <ul class="align-items-center">
+                                    <li class="bg-dark text-light list-group-item">Titulo: <%= film.title %> / <%= film.year_release %></li>
+                                    <li class="bg-dark text-light sinopsis list-group-item">Sinopsis: <%= film.sinopsis %></li>
+                                </ul>    
+                                </div>
+                                <div class="btn-group card-body row justify-content-center">
+                                    <% if(film.enable_film === 0){%>   
+                                        <form action="/admin/film/delete/<%= film.id %>/auth/<%= token %>" method="POST">
+                                            <button class="btn btn-xs btn-outline-danger" type="submit">BORRAR</button>
+                                        </form>
+                                         
+                                        <form action="/admin/film/enable/<%= film.id %>/auth/<%= token %>" method="POST">
+                                            <button class="btn btn-xs btn-outline-success" type="submit">HABILITAR</button>
+                                        </form>
+                                        <%} else {%>
+                                        <form action="/admin/film/disable/<%= film.id %>/auth/<%= token %>" method="POST">
+                                            <button class="btn btn-outline-primary btn-xs" type="submit">DESHABILITAR</button>
+                                        </form>
+                                    <%}%>
+                                    </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+                <% } else { %>
+                    <h1>No films Found!</h1>
+                <% } %>
+            </main>
+      
+
+
+</body>
+</html>

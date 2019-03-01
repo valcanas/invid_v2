@@ -1,0 +1,90 @@
+<%- include headToken %>    
+       <!-------PELICULAS HABILITADAS------------------------------------------------------->
+       <hr class="style1">
+<div class="container">
+            <% if (shortfilms.length > 0) { %>
+        <div class="row"> 
+            <% for (let film of shortfilms) { %>
+        
+
+            <div class="col-lg-4 col-md-12 mb-4">  
+              <div class="modal fade" id="modal<%= film.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+                <div class="modal-dialog modal-lg" role="document">  
+                  <div class="modal-content">
+                    
+                            
+                    <div class="modal-body mb-0 p-0 bg-dark">
+                      <div class="embed-responsive embed-responsive-16by9 z-depth-1-half">
+                        <iframe class="embed-responsive-item" src="<%= film.url %>"
+                          allowfullscreen></iframe>
+                      </div>
+                    </div>
+                    <div class="modal-footer justify-content-left bg-dark">
+                        <span class="text-light col-2"><%= film.title %></span>
+                      <span class="text-light col-2"><%= film.year_release %></span>
+                      <textarea class="text-light col-6 bg-dark" rows="4" cols="auto">Sinopsis: <%= film.sinopsis %></textarea>
+                      <div justify-content-center>
+
+                        <button type="button" class="btn btn-outline-primary btn-rounded btn-md ml-4" data-dismiss="modal">Cerrar</button>
+                      </div>
+                      
+                    </div>
+                
+                </div>
+                </div>
+              </div>
+              <div class="portaretrato">
+             <a data-toggle="modal" href="#modal<%= film.id %>"><img class="coverFilm img-fluid z-depth-1" src="<%= film.thumbnail %>" alt="video"
+                ></a>
+                <h6 class="text-light"><%= film.title %></h6>
+              </div>
+              <div>
+                  <form class="videoSelected" id="<%= film.id %>"  action="/main/auth/voting/<%= token %>" method="POST">
+                      <section class='rating-widget'>
+                        <div class='rating-stars text-center seleccion'>
+                          <ul id='stars' class="1">
+                            <li class='star' title='Pobre' data-value='1' id="<%= film.id %>">
+                              <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class='star' title='Regular' data-value='2' id="<%= film.id %>">
+                              <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class='star' title='Bueno' data-value='3' id="<%= film.id %>">
+                              <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class='star' title='Muy Bueno' data-value='4' id="<%= film.id %>">
+                              <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            <li class='star' title='Excelente' data-value='5' id="<%= film.id %>">
+                              <i class='fa fa-star fa-fw'></i>
+                            </li>
+                            
+                          </ul>
+                          <div class='clearfix'></div>
+                          <div class='text-message' id="<%= film.id %>"></div>
+                          <div class='clearfix'></div>
+                        </div>
+                        
+                      </section>
+                  </form>
+              </div>
+            </div>
+
+
+            
+
+            
+            <% } %>
+        </div>
+
+
+            <% } else { %>
+                <h1>No films Found!</h1>
+            <% } %>
+        </div>
+     
+     
+
+
+</body>
+</html>

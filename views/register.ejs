@@ -1,0 +1,74 @@
+<%- include headToken %>
+        
+                <h4 class="row justify-content-center adminArea text-light">Bienvenido <%= user_name %></h4>
+                <div>
+                                <main>
+                                        <% if (shortfilms.length > 0) { %>
+                                        <h5 class="row justify-content-center adminArea text-light">Hasta ahora has subido <%= shortfilms.length %> vídeo<% if (shortfilms.length > 1) {%>s<%} %>!</h5>
+
+
+                                            <div class="col-12">
+                                                <div class="row justify-content-center">
+                                                <% for (let film of shortfilms) { %>
+                                                    <div class="tarjetas bg-dark card rounded col-lg-3 border border-<% if(film.enable_film === 1){%>primary<%} else {%>danger<%}%>">
+                                                        <iframe class="adminVideo card-img-top" src="<%= film.url %>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                                        <p class="bg-dark text-light list-group-item"><%= film.title %> / <%= film.year_release %></p>
+                                                    </div>
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <% } else { %>
+                                            <h5 class="row justify-content-center adminArea text-light">Aún no has subido ningún vídeo!</h5>
+                                            <h5 class="row justify-content-center adminArea text-light">Anímate! sube el primero!</h5>
+                                        <% } %>
+                                </main>
+                </div>
+        <div class="col-6 col-center">
+                <h2 class="row justify-content-center adminArea"><% if (shortfilms.length > 0) { %>Subir Video<%}%></h2>
+            <form class="subirPeliUser form-group" action="/register/upload/<%= token %>" method="POST">
+            <div class="container subirPeli">
+                <div class="text-light col-xs-2">
+                    <label for="title">Titulo</label>
+                    <input class="form-control" type="text" name="title" id="name">
+                </div>
+                <div class="text-light col-xs-2">
+                        <label for="url">Url del video</label>
+                        <input class="form-control" type="text" name="url" id="pass">
+                </div>
+                <div class="text-light col-xs-2">
+                        <label for="thumbnail">Url del thumbnail</label>
+                        <input class="form-control" type="text" name="thumbnail" id="pass">
+                </div>
+                <div class="text-light col-xs-2">
+                        <label for="year_release">Año de realizacion</label>
+                        <select class="custom-select" for="year_release" name="year_release" id="year">
+                                <option value="2015">2015</option>
+                                <option value="2016">2016</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                        </select>
+                </div>
+                <div class="text-light col-xs-2">
+                        <label for="gen_id">Genero</label>
+                        <select class="custom-select" for="gen_id" name="gen_id" id="genero">
+                            <option value="1">Sci-Fi</option>
+                            <option value="2">Fantasy</option>
+                            <option value="3">Terror</option>
+                            <option value="4">Animacion</option>
+                        </select>
+                </div>
+                <div class="text-light col-xs-2">
+                        <label for="sinpsis">Sinopsis</label>
+                        <textarea class="form-control" rows="5" id="sinopsis" name="sinopsis"></textarea>
+                </div>
+                <div>
+                <button class="subirPeli float-right btn btn-outline-primary btn-rounded btn-md ml-4" type="submit">Subir Vídeo</button>
+                </div>
+            </div>
+            </form>
+            
+        </div>
+
+</body>
+</html>

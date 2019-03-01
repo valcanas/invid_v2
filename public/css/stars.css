@@ -1,0 +1,57 @@
+
+  
+  * {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+  
+  *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  }
+  
+  .clearfix {
+    clear:both;
+  }
+  
+
+  
+  a {
+    color: tomato;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #2196f3;
+  }
+  
+  .rating-stars ul {
+    list-style-type:none;
+    padding:0;
+    
+    -moz-user-select:none;
+    -webkit-user-select:none;
+  }
+  .rating-stars ul > li.star {
+    display:inline-block;
+    
+  }
+
+  
+  .rating-stars ul > li.star > i.fa {
+    font-size:1rem; 
+    color:rgba(204, 204, 204, 0.746); 
+  }
+  
+  /* Hover state of the stars */
+  .rating-stars ul > li.star.hover > i.fa {
+    color:rgb(54, 198, 255);
+  }
+  
+  /* Selected state of the stars */
+  .rating-stars ul > li.star.selected > i.fa {
+    color:rgb(47, 144, 255);
+  }
+  
